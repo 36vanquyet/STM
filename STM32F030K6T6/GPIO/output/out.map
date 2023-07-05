@@ -1,0 +1,182 @@
+
+Discarded input sections
+
+ .group         0x00000000        0xc ./object/main.o
+ .group         0x00000000        0xc ./object/main.o
+ .group         0x00000000        0xc ./object/main.o
+ .group         0x00000000        0xc ./object/main.o
+ .group         0x00000000        0xc ./object/main.o
+ .group         0x00000000        0xc ./object/main.o
+ .group         0x00000000        0xc ./object/main.o
+ .group         0x00000000        0xc ./object/main.o
+ .group         0x00000000        0xc ./object/startup_file.o
+ .group         0x00000000        0xc ./object/startup_file.o
+ .group         0x00000000        0xc ./object/startup_file.o
+ .group         0x00000000        0xc ./object/startup_file.o
+ .group         0x00000000        0xc ./object/startup_file.o
+ .group         0x00000000        0xc ./object/startup_file.o
+ .group         0x00000000        0xc ./object/startup_file.o
+ .debug_macro   0x00000000      0xa90 ./object/startup_file.o
+ .debug_macro   0x00000000       0x22 ./object/startup_file.o
+ .debug_macro   0x00000000       0x8e ./object/startup_file.o
+ .debug_macro   0x00000000       0x51 ./object/startup_file.o
+ .debug_macro   0x00000000      0x103 ./object/startup_file.o
+ .debug_macro   0x00000000       0x6a ./object/startup_file.o
+ .debug_macro   0x00000000      0x1df ./object/startup_file.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00008000         xr
+SRAM             0x20000000         0x00001000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x08000000      0x1f8
+ *(.isr_vector)
+ .isr_vector    0x08000000       0xa4 ./object/startup_file.o
+                0x08000000                vectors
+ *(.text)
+ .text          0x080000a4       0xc8 ./object/main.o
+                0x080000a4                main
+ .text          0x0800016c       0x8c ./object/startup_file.o
+                0x0800016c                DMA_CH4_5_Handler
+                0x0800016c                FLASH_Handler
+                0x0800016c                EXTI2_3_Handler
+                0x0800016c                SVCall_Handler
+                0x0800016c                USART3_4_5_6_Handler
+                0x0800016c                HardFault_Handler
+                0x0800016c                SysTick_Handler
+                0x0800016c                I2C1_Handler
+                0x0800016c                PendSV_Handler
+                0x0800016c                NMI_Handler
+                0x0800016c                ADC_Handler
+                0x0800016c                WWDG_Handler
+                0x0800016c                RTC_Handler
+                0x0800016c                TIM1_CC_Handler
+                0x0800016c                EXTI4_15_Handler
+                0x0800016c                USB_Handler
+                0x0800016c                USART1_Handler
+                0x0800016c                TIM3_Handler
+                0x0800016c                Default_Handler
+                0x0800016c                TIM17_Handler
+                0x0800016c                EXTI0_1_Handler
+                0x0800016c                DMA_CH1_Handler
+                0x0800016c                SPI2_Handler
+                0x0800016c                DMA_CH2_3_Handler
+                0x0800016c                TIM16_Handler
+                0x0800016c                I2C2_Handler
+                0x0800016c                TIM14_Handler
+                0x0800016c                USART2_Handler
+                0x0800016c                SPI1_Handler
+                0x0800016c                RCC_Handler
+                0x0800016c                TIM15_Handler
+                0x0800016c                TIM1_BRK_UP_TRG_COM_Handler
+                0x0800016c                TIM6_Handler
+                0x08000172                Reset_Handler
+ *(.text*)
+ *(.rodata)
+ *(.rodata*)
+                0x080001f8                        . = ALIGN (0x4)
+                0x080001f8                        _etext = .
+                0x080001f8                        _la_data = LOADADDR (.data)
+
+.glue_7         0x080001f8        0x0
+ .glue_7        0x080001f8        0x0 linker stubs
+
+.glue_7t        0x080001f8        0x0
+ .glue_7t       0x080001f8        0x0 linker stubs
+
+.vfp11_veneer   0x080001f8        0x0
+ .vfp11_veneer  0x080001f8        0x0 linker stubs
+
+.v4_bx          0x080001f8        0x0
+ .v4_bx         0x080001f8        0x0 linker stubs
+
+.iplt           0x080001f8        0x0
+ .iplt          0x080001f8        0x0 ./object/main.o
+
+.rel.dyn        0x080001f8        0x0
+ .rel.iplt      0x080001f8        0x0 ./object/main.o
+
+.data           0x20000000        0x8 load address 0x080001f8
+                0x20000000                        _sdata = .
+ *(.data)
+ .data          0x20000000        0x8 ./object/main.o
+                0x20000000                RCC
+                0x20000004                GPIOA
+ .data          0x20000008        0x0 ./object/startup_file.o
+ *(.data*)
+                0x20000008                        . = ALIGN (0x4)
+                0x20000008                        _edata = .
+
+.igot.plt       0x20000008        0x0 load address 0x08000200
+ .igot.plt      0x20000008        0x0 ./object/main.o
+
+.bss            0x20000008        0x0 load address 0x08000200
+                0x20000008                        _sbss = .
+ *(.bss)
+ .bss           0x20000008        0x0 ./object/main.o
+ .bss           0x20000008        0x0 ./object/startup_file.o
+ *(.bss*)
+ *(COMMON)
+                0x20000008                        . = ALIGN (0x4)
+                0x20000008                        _ebss = .
+LOAD ./object/main.o
+LOAD ./object/startup_file.o
+OUTPUT(./output/out.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0x3a8
+ .debug_info    0x00000000      0x223 ./object/main.o
+ .debug_info    0x00000223      0x185 ./object/startup_file.o
+
+.debug_abbrev   0x00000000      0x1eb
+ .debug_abbrev  0x00000000       0xea ./object/main.o
+ .debug_abbrev  0x000000ea      0x101 ./object/startup_file.o
+
+.debug_aranges  0x00000000       0x40
+ .debug_aranges
+                0x00000000       0x20 ./object/main.o
+ .debug_aranges
+                0x00000020       0x20 ./object/startup_file.o
+
+.debug_macro    0x00000000      0xfe6
+ .debug_macro   0x00000000       0x6c ./object/main.o
+ .debug_macro   0x0000006c      0xa90 ./object/main.o
+ .debug_macro   0x00000afc       0x22 ./object/main.o
+ .debug_macro   0x00000b1e       0x8e ./object/main.o
+ .debug_macro   0x00000bac       0x51 ./object/main.o
+ .debug_macro   0x00000bfd      0x103 ./object/main.o
+ .debug_macro   0x00000d00       0x6a ./object/main.o
+ .debug_macro   0x00000d6a      0x1df ./object/main.o
+ .debug_macro   0x00000f49       0x22 ./object/main.o
+ .debug_macro   0x00000f6b       0x7b ./object/startup_file.o
+
+.debug_line     0x00000000      0x3d9
+ .debug_line    0x00000000      0x1d8 ./object/main.o
+ .debug_line    0x000001d8      0x201 ./object/startup_file.o
+
+.debug_str      0x00000000     0x3c4a
+ .debug_str     0x00000000     0x3b65 ./object/main.o
+                               0x3ccf (size before relaxing)
+ .debug_str     0x00003b65       0xe5 ./object/startup_file.o
+                               0x3cd5 (size before relaxing)
+
+.comment        0x00000000       0x55
+ .comment       0x00000000       0x55 ./object/main.o
+                                 0x56 (size before relaxing)
+ .comment       0x00000055       0x56 ./object/startup_file.o
+
+.ARM.attributes
+                0x00000000       0x2c
+ .ARM.attributes
+                0x00000000       0x2c ./object/main.o
+ .ARM.attributes
+                0x0000002c       0x2c ./object/startup_file.o
+
+.debug_frame    0x00000000       0x7c
+ .debug_frame   0x00000000       0x30 ./object/main.o
+ .debug_frame   0x00000030       0x4c ./object/startup_file.o
