@@ -37,3 +37,6 @@
 If after entering the command you see version ARM GNU Toolchain then you succeed!
 
 ![Alt text](image.png)
+
+### Note:
+> If ARM GNU Toolchain was installed in CodeSpace then you just perform steps 6 and 7.
